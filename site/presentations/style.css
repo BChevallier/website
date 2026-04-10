@@ -1,0 +1,24 @@
+:root {
+  --r-background-color: black;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-transform: none;
+}
+
+.reveal a.no-highlight::-moz-focus-inner {
+  border: 0;
+}
+
+.reveal blockquote {
+  background: rgba(255, 255, 255, 0.1);
+}
