@@ -17,8 +17,360 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<!--INTRODUCTION-->
+				<section>
+				  <h3>Ein Kommilitone erzählt dir, er programmiere gern.</h3>
+				  <h3 class="fragment">
+					Wie wahrscheinlich ist es, dass er Informatik studiert?
+				  </h3>
+				  <div style="height: 35vh;"></div>
+				</section>
+
+				<section
+				  data-auto-animate
+				  data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				  style="display: flex; flex-direction: column; height: 100%;"
+				>
+				  <h3 style="margin-top: 6vh;">KIT Studentenpopulation</h3>
+
+				  <div
+					style="position: relative; width: 300px; height: 300px; background: #404040; margin: 0 auto; border-radius: 5px;"
+					data-id="Square1"
+				  ></div>
+
+				  <div style="height: 5vh;"></div>
+
+				  <div
+					style="position: relative; width: 400px; height: 400px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 10px;"
+				  >
+					<div
+					  style="position: absolute; right: 50%; top: 0; width: 100%; height: 25%; background: #4664AA; border-radius: 5px 0 0 5px; text-align: center;"
+					  data-id="Informatikstudenten"
+					>
+					  Informatikstudenten
+					</div>
+
+					<div
+					  style="position: absolute; left: 50%; top: 0; width: 100%; height: 25%; background: #00876C; border-radius: 0 5px 5px 0; text-align: center;"
+					  data-id="nicht-Informatikstudenten"
+					>
+					  keine Informatikstudenten
+					</div>
+				  </div>
+				</section>
+
+				<section
+				  data-auto-animate
+				  data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				  style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;"
+				>
+				  <h3 style="margin-top: 6vh;">KIT Studentenpopulation</h3>
+
+				  <div
+					style="position: relative; width: 300px; height: 300px; margin: 0 auto; border-radius: 5px;"
+					data-id="Square1"
+				  >
+					<div
+					  style="position: absolute; left: 0; top: 0; width: 12.6%; height: 100%; background: #4664AA; border-radius: 5px 0 0 5px;"
+					  data-id="Informatikstudenten"
+					></div>
+
+					<div
+					  style="position: absolute; left: 12.6%; top: 0; width: 87.4%; height: 100%; background: #00876C; border-radius: 0 5px 5px 0;"
+					  data-id="nicht-Informatikstudenten"
+					></div>
+				  </div>
+				</section>
+
+				<section
+				  data-auto-animate
+				  data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				  style="display: flex; flex-direction: column; height: 100%;"
+				>
+				  <h3 style="margin-top: 6vh;">KIT Studentenpopulation</h3>
+
+				  <div
+					style="position: relative; width: 300px; height: 300px; margin: 0 auto; background: #404040; border-radius: 5px;"
+					data-id="Square1"
+				  >
+					<div
+					  style="position: absolute; left: 0; bottom: 0; width: 12.6%; height: 95%; background: #4664AA; border-radius: 0 0 0 5px;"
+					  data-id="Informatikstudenten"
+					></div>
+
+					<div
+					  style="position: absolute; left: 12.6%; bottom: 0; width: 87.4%; height: 10%; background: #00876C; border-radius: 0 0 5px 0;"
+					  data-id="nicht-Informatikstudenten"
+					></div>
+				  </div>
+				</section>
+
+				<!-- KRANKHEITIS -->
+				<section>
+				  <h3>Dein Krankheitis-Test ist positiv.</h3>
+
+				  <ul>
+					<li class="fragment">20% der Bevölkerung hat Krankheitis.</li>
+					<li class="fragment">
+					  Der Test erkennt Krankheitis mit 90% Sicherheit.
+					</li>
+					<li class="fragment">
+					  Bei gesunden Menschen ist der Test in 30% der Fälle positiv.
+					</li>
+					<li class="fragment">
+					  Wie wahrscheinlich ist es, dass du Krankheitis hast?
+					</li>
+				  </ul>
+
+				  <div style="height: 28vh;"></div>
+				</section>
+
+				<section>
+				  <h3 style="margin-top: 6vh; margin-bottom: 0vh;">
+					Dein Krankheitis-Test ist positiv.
+				  </h3>
+
+				  <img
+					src="media/waterfalldiagram.png"
+					style="max-width: 800px; max-height: none; margin-top: 3vh;"
+					alt="Waterfall-Diagramm"
+				  />
+				</section>
+
+				<!-- FIRE ALARM -->
+				<section>
+				  <h3>Dein Feuermelder fängt an zu piepen.</h3>
+
+				  <ul>
+					<li class="fragment">
+					  Wie wahrscheinlich ist ein Brand an einem gegebenen Tag?
+					</li>
+					<li class="fragment">
+					  Wie wahrscheinlich ist es, dass der Feuermelder bei einem Feuer piept?
+					</li>
+					<li class="fragment">
+					  Wie wahrscheinlich ist es, dass der Feuermelder ohne Feuer piept?
+					</li>
+					<li class="fragment">
+					  Wie wahrscheinlich ist es, dass es brennt?
+					</li>
+				  </ul>
+
+				  <div style="height: 16vh;"></div>
+				</section>
+				<section
+				  data-auto-animate
+				  data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				  data-auto-animate-id="Formula"
+				>
+				  <h3 style="margin-top: 6vh;">Lass es uns als Formel ausdrücken.</h3>
+
+				  <div class="math fragment" style="font-size: 3rem;" data-id="bayes">
+					$$ P(A \vert B) = \frac{P(B \vert A) \cdot P(A)}{P(B)} $$
+				  </div>
+
+				  <div style="height: 60vh;"></div>
+				</section>
+
+				<section
+				  data-auto-animate
+				  data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				  data-auto-animate-id="Formula"
+				>
+				  <h3 style="margin-top: 6vh;">Lass es uns als Formel ausdrücken.</h3>
+
+				  <div class="math" style="font-size: 3rem;" data-id="bayes">
+					$$ P(H \vert e) = \frac{P(e \vert H) \cdot P(H)}{P(e)} $$
+				  </div>
+
+				  <div style="height: 43.5vh;"></div>
+				</section>
+
+				<section
+				  data-auto-animate
+				  data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				  data-auto-animate-id="Formula"
+				>
+				  <h3 style="margin-top: 6vh;">Lass es uns als Formel ausdrücken.</h3>
+
+				  <div class="math" style="font-size: 3rem; text-align: center;" data-id="bayes">
+					$$ P(H \vert e) =
+					\frac{P(e \vert H) \cdot P(H)}
+					{P(e \vert H) \cdot P(H) + P(e \vert \neg H) \cdot P(\neg H)} $$
+				  </div>
+
+				  <div style="height: 43.5vh;"></div>
+				</section>
+
+				<!-- NEW COMPUTER -->
+				<section>
+				  <h3 style="margin-top: 6vh;">Dein neuer Computer ist laut.</h3>
+
+				  <ul>
+					<li class="fragment">
+					  2% der neuen Computer haben einen defekten Lüfter.
+					</li>
+					<li class="fragment">
+					  80% der Computer mit defektem Lüfter sind laut.
+					</li>
+					<li class="fragment">
+					  5% der Computer ohne defekten Lüfter sind laut.
+					</li>
+					<li class="fragment">
+					  Wie wahrscheinlich ist es, dass dein Computer einen defekten Lüfter hat?
+					</li>
+				  </ul>
+
+				  <div style="height: 38vh;"></div>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="Formula">
+				  <h3 style="margin-top: 6vh;">Dein neuer Computer ist laut.</h3>
+
+				  <div class="math" style="font-size: 3rem;" data-id="bayes">
+					$$ P(H \vert e) = \frac{P(e \vert H) \cdot P(H)}{P(e)} $$
+				  </div>
+
+				  <div style="height: 43.5vh;"></div>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="Formula">
+				  <h3 style="margin-top: 6vh;">Dein neuer Computer ist laut.</h3>
+
+				  <div class="math" style="font-size: 3rem;" data-id="bayes">
+					$$ P(\text{kaputt} \vert \text{laut}) =
+					\frac{P(\text{laut} \vert \text{kaputt}) \cdot P(\text{kaputt})}
+					{P(\text{laut})} $$
+				  </div>
+
+				  <div style="height: 43.5vh;"></div>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="Formula">
+				  <h3 style="margin-top: 6vh;">Dein neuer Computer ist laut.</h3>
+
+				  <div class="math" style="font-size: 3rem;" data-id="bayes">
+					$$ P(\text{k} \vert \text{l}) =
+					\frac{P(\text{l} \vert \text{k}) \cdot P(\text{k})}
+					{P(\text{l})} $$
+				  </div>
+
+				  <div style="height: 43.5vh;"></div>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="Formula">
+				  <h3 style="margin-top: 6vh;">Dein neuer Computer ist laut.</h3>
+
+				  <div class="math" style="font-size: 3rem;" data-id="bayes">
+					$$ P(\text{k} \vert \text{l}) =
+					\frac{P(\text{l} \vert \text{k}) \cdot P(\text{k})}
+					{P(\text{l} \vert \text{k}) \cdot P(\text{k})
+					+ P(\text{l} \vert \neg \text{k}) \cdot P(\neg \text{k})} $$
+				  </div>
+
+				  <div style="height: 43.5vh;"></div>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="Formula">
+				  <h3 style="margin-top: 6vh;">Dein neuer Computer ist laut.</h3>
+
+				  <div class="math" style="font-size: 3rem;" data-id="bayes">
+					$$ P(\text{k} \vert \text{l}) =
+					\frac{0.8 \cdot 0.02}{0.8 \cdot 0.02 + 0.05 \cdot 0.98} $$
+				  </div>
+
+				  <div class="math fragment" style="font-size: 3rem;" data-id="bayes">
+					$$ P(\text{k} \vert \text{l}) =
+					\frac{0.016}{0.016 + 0.049}
+					= \frac{0.016}{0.065} $$
+				  </div>
+
+				  <div class="math fragment" style="font-size: 3rem;" data-id="bayes">
+					$$ P(\text{kaputt} \vert \text{laut}) \approx 25\% $$
+				  </div>
+
+				  <div style="height: 43.5vh;"></div>
+				</section>
+
+				<!-- DEATH EATERS -->
+				<section>
+				  <section>
+					<h3>Die Todesser tragen noch ihr dunkles Mal.</h3>
+
+					<h3 class="fragment">
+					  Wie wahrscheinlich ist es, dass Voldemort noch lebt?
+					</h3>
+
+					<div style="height: 35vh;"></div>
+				  </section>
+
+				  <section>
+					<blockquote style="font-size: 28pt; width: 100%;">
+					  "Suppose the Dark Mark is certain to continue while the Dark Lord's
+					  sentience lives on, but a priori we'd only have guessed a twenty percent
+					  chance of the Dark Mark continuing to exist after the Dark Lord dies. Then
+					  the observation, "The Dark Mark has not faded" is five times as likely to
+					  occur in worlds where the Dark Lord is alive as in worlds where the Dark
+					  Lord is dead. Is that really commensurate with the prior improbability of
+					  immortality? Let's say the prior odds were a hundred-to-one against the
+					  Dark Lord surviving. If a hypothesis is a hundred times as likely to be
+					  false versus true, and then you see evidence five times more likely if the
+					  hypothesis is true versus false, you should update to believing the
+					  hypothesis is twenty times as likely to be false as true."
+					</blockquote>
+				  </section>
+				</section>
+
+				<section data-auto-animate>
+				  <h3>Als Quoten ausgedrückt.</h3>
+
+				  <div style="height: 8vh;"></div>
+
+				  <div class="math" data-id="odds-table">
+					$$\begin{array}{a b c d}
+					\text{Prior odds} & A & : & B \\
+					\times \; \text{Likelihood ratio} & a & : & b \\
+					\hline
+					\text{Posterior odds} & Aa & : & Bb
+					\end{array}$$
+				  </div>
+
+				  <div style="height: 18vh;"></div>
+				</section>
+
+				<section data-auto-animate>
+				  <h3>Als Quoten ausgedrückt.</h3>
+
+				  <div style="height: 8vh;"></div>
+
+				  <div class="math" data-id="odds-table">
+					$$\begin{array}{a b c d}
+					\text{Prior odds} & 1 & : & 100 \\
+					\times \; \text{Likelihood ratio} & 100 & : & 20 \\
+					\hline
+					\text{Posterior odds} & 100 & : & 2000
+					\end{array}$$
+				  </div>
+
+				  <div style="height: 18vh;"></div>
+				</section>
+
+				<section data-auto-animate>
+				  <h3>Als Quoten ausgedrückt.</h3>
+
+				  <div style="height: 8vh;"></div>
+
+				  <div class="math" data-id="odds-table">
+					$$\begin{array}{a b c d}
+					\text{Prior odds} & 1 & : & 100 \\
+					\times \; \text{Likelihood ratio} & 5 & : & 1 \\
+					\hline
+					\text{Posterior odds} & 1 & : & 20
+					\end{array}$$
+				  </div>
+
+				  <div style="height: 18vh;"></div>
+				</section>
 			</div>
 		</div>
 
@@ -26,6 +378,7 @@
 		<script src="../reveal.js/plugin/notes/notes.js"></script>
 		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
 		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../reveal.js/plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -34,7 +387,7 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
 			});
 		</script>
 	</body>
