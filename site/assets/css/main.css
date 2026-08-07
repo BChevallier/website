@@ -2030,6 +2030,23 @@ input, select, textarea {
 		line-height: inherit;
 		text-transform: none !important;
 	}
+	.icon.solid::before {
+		font-family: "Font Awesome 7 Free";
+		font-weight: 900;
+		content: var(--fa);
+	}
+
+	.icon.regular::before {
+		font-family: "Font Awesome 7 Free";
+		font-weight: 400;
+		content: var(--fa);
+	}
+
+	.icon.brands::before {
+		font-family: "Font Awesome 7 Brands";
+		font-weight: 400;
+		content: var(--fa);
+	}
 
 	.icon > .label {
 		display: none;
