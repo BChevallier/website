@@ -22,3 +22,33 @@
 .reveal blockquote {
   background: rgba(255, 255, 255, 0.1);
 }
+
+/* Content slides: pin the title to the top at a fixed height so it doesn't
+   jump between slides (reveal otherwise vertically centers each slide). */
+.reveal .slides section.titled {
+  top: 0 !important;
+}
+
+.reveal .slides section.titled > h3:first-child {
+  height: 2.4em;
+  margin: 0.4em 0 0.3em;
+}
+
+/* Link wrapping a quote block: keep the quote white, no link colour/underline. */
+.reveal a.quote-link,
+.reveal a.quote-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Fragment that keeps the element visible but drops its fill when revealed
+   (used to turn a gray square black in step with the text). */
+.reveal .fragment.fill-black {
+  opacity: 1;
+  visibility: inherit;
+  transition: background-color 0.4s ease;
+}
+
+.reveal .fragment.fill-black.visible {
+  background: transparent !important;
+}
