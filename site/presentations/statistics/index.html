@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Misleading Statistics</title>
 
 		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
 		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
@@ -12,13 +12,352 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
-        <link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="../style.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<!-- INTRODUCTION -->
+				<section>
+				  <blockquote style="text-align: center;">
+					&ldquo;There are three kinds of lies: lies, damned lies and statistics.&rdquo;
+				  </blockquote>
+					<aside class="notes">
+					  Often attributed to Mark Twain, who in turn credited it to Benjamin Disraeli. The real origin is unclear. The following slides show how correct numbers can still leave a false impression.
+					</aside>
+				</section>
+
+				<!-- MISLEADING GRAPHICS -->
+				<section>
+				  <h2>Misleading graphics</h2>
+					<aside class="notes">
+					  The same data can look very different depending on how it is drawn.
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+				  <div style="text-align: center;" data-id="Graph">
+					<img src="media/flat_graph.svg" alt="Line chart that looks flat" style="width: 80%; height: auto;">
+				  </div>
+					<aside class="notes">
+					  Sales (in millions) from 2012 to 2026, with the y-axis starting at 0. The line is almost flat.
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+				  <div style="text-align: center;" data-id="Graph">
+					<img src="media/up_graph.svg" alt="The same data with a rescaled axis: it looks like strong growth" style="width: 80%; height: auto;">
+				  </div>
+					<aside class="notes">
+					  The same data, but the y-axis now only runs from 11.0 to 12.2. The same increase looks like strong growth.
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+				  <div style="text-align: center;" data-id="Graph">
+					<img src="media/down_graph.svg" alt="The same data with a different axis range: it looks like a decline" style="width: 80%; height: auto;">
+				  </div>
+					<aside class="notes">
+					  The same data again, but the time axis runs backwards (2026 on the left). Now it looks like sales are falling.
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+				  <div style="text-align: center;" data-id="Graph">
+					<img src="media/down_graph_unlabelled.svg" alt="The same decline without axis labels" style="width: 80%; height: auto;">
+				  </div>
+					<aside class="notes">
+					  The reversed chart with its labels removed. Without them there is nothing that tells you the time axis runs backwards.
+					</aside>
+				</section>
+
+				<section>
+				  <div style="text-align: center;">
+					<video data-src="media/BIIB_rolling_avg.mp4" muted playsinline controls style="max-height: 600px;"></video>
+				  </div>
+					<aside class="notes">
+					  Rolling average of the Biogen (BIIB) share price. The animation increases the size of the rolling window, starting at 55. A small window follows every swing, a large one smooths them away. The underlying prices never change.
+					</aside>
+				</section>
+
+				<section>
+				  <div style="text-align: center;">
+					<img src="media/BIIB_rolling_avg_frame_last.svg" alt="Rolling average of the BIIB share price" style="max-height: 600px;">
+				  </div>
+					<aside class="notes">
+					  The last frame of the animation: a large window and the data cut off at 2016. It looks like a steady rise, but the full series continues to 2026 and falls after its peak around 2015.
+					</aside>
+				</section>
+
+				<section>
+				  <div style="text-align: center;">
+					<a href="https://github.com/mwaskom/seaborn-data">
+					  <img src="media/titanic_passengers_hist.svg" alt="Histogram of Titanic passengers" style="width: 80%; height: auto;">
+					</a>
+				  </div>
+					<aside class="notes">
+					  Number of Titanic passengers by age. Data from the <a href="https://github.com/mwaskom/seaborn-data">seaborn-data</a> repository.
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+				  <div style="text-align: center;" data-id="histogram">
+					<a href="https://github.com/mwaskom/seaborn-data">
+					  <img src="media/passenger_hist.svg" alt="Titanic passenger histogram" style="width: 90%; height: auto;">
+					</a>
+				  </div>
+					<aside class="notes">
+					  The same passengers split into male and female. Both histograms use the same age bins.
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+				  <div style="text-align: center;" data-id="histogram">
+					<a href="https://github.com/mwaskom/seaborn-data">
+					  <img src="media/passenger_hist_lie.svg" alt="Titanic passenger histogram, misleading version" style="width: 90%; height: auto;">
+					</a>
+				  </div>
+					<aside class="notes">
+					  The female histogram is redrawn with wider age bins. The shape of the distribution changes although the data does not.
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+				  <div style="text-align: center;" data-id="histogram">
+					<a href="https://github.com/mwaskom/seaborn-data">
+					  <img src="media/passenger_hist_lie2.svg" alt="Titanic passenger histogram, another misleading version" style="width: 90%; height: auto;">
+					</a>
+				  </div>
+					<aside class="notes">
+					  On top of that, the y-axis of the male histogram now starts above 0, which changes how the bars compare. Same data, different impression.
+					</aside>
+				</section>
+
+				<section>
+				  <div style="width: 60%; margin: 0 auto; text-align: center;">
+					<img class="fragment" src="media/size_comp.png" alt="Size comparison, 2025 vs 2026" style="width: 100%; height: auto; display: block;">
+					<div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; margin-top: 0.5rem;">
+					  <span style="text-align: center; transform: translateX(-4rem);">2025</span>
+					  <span style="text-align: center; transform: translateX(-1rem);">2026</span>
+					</div>
+				  </div>
+					<aside class="notes">
+					  The value doubled from 2025 to 2026. The picture is scaled up with its proportions kept, so every dimension doubles and the object looks eight times as large (2 × 2 × 2). A doubling drawn as a 3D object is perceived as an eightfold increase.
+					</aside>
+				</section>
+
+				<!-- MISLEADING AVERAGES -->
+				<section>
+				  <h2>Misleading averages</h2>
+					<aside class="notes">
+					  An average is one number summarising many. It can be technically correct and still tell you nothing about a typical case.
+					</aside>
+				</section>
+
+				<section>
+				  <section>
+					<blockquote style="text-align: center;">
+					  The average net worth of a SpaceX employee is at least 63 million dollars.
+					</blockquote>
+				  	<aside class="notes">
+				  	  The mean is pulled up by a single extreme value. The median would be far lower.
+				  	</aside>
+				  </section>
+				  <section class="titled">
+					<h3>Explanation</h3>
+					<ul>
+					  <li>Elon Musk is a SpaceX employee.</li>
+					  <li>
+						Elon Musk's net worth is
+						<a href="https://en.wikipedia.org/wiki/Wealth_of_Elon_Musk">636 billion dollars</a>
+						according to Forbes.
+					  </li>
+					  <li>
+						There are roughly
+						<a href="https://www.unifygtm.com/insights-headcount/spacex">10,000 SpaceX employees</a>.
+					  </li>
+					  <li>
+						Assuming everyone's net worth, aside from Elon Musk's, is 0 gives us a lower bound.
+					  </li>
+					  <li style="list-style: none; font-size: 0.8em;">
+						$$636\text{B} \div 10{,}000 \simeq 63\text{ million dollars per employee}$$
+					  </li>
+					</ul>
+				  	<aside class="notes">
+				  	  Net worth figure from Forbes via <a href="https://en.wikipedia.org/wiki/Wealth_of_Elon_Musk">Wikipedia</a>, headcount estimate from <a href="https://www.unifygtm.com/insights-headcount/spacex">Unify</a>. Setting everyone else's net worth to 0 can only lower the mean, so the result is a lower bound: 636 billion / 10,000 ≈ 63.6 million.
+				  	</aside>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+					<blockquote style="text-align: center;">
+					  The Vatican has an average of two popes per square kilometre.
+					</blockquote>
+				  	<aside class="notes">
+				  	  The mean of a density depends on the area you divide by, not on how the people or popes are distributed.
+				  	</aside>
+				  </section>
+				  <section class="titled">
+					<h3>Explanation</h3>
+					<ul>
+					  <li>The Vatican has an area of $0.49\text{ km}^2$.</li>
+					  <li>There is one pope in the Vatican.</li>
+					  <li>$1\text{ pope} \div 0.49\text{ km}^2 \simeq 2.04\text{ popes per km}^2$</li>
+					</ul>
+				  	<aside class="notes">
+				  	  The Vatican has an area of about 0.49 km² and one pope, so 1 / 0.49 ≈ 2.04 popes per km².
+				  	</aside>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+					<blockquote style="text-align: center;">
+					  You have an above-average number of arms.
+					</blockquote>
+				  	<aside class="notes">
+				  	  Mean versus most common value: the mean can sit somewhere almost nobody is.
+				  	</aside>
+				  </section>
+				  <section class="titled">
+					<h3>Explanation</h3>
+					<ul>
+					  <li>Most humans have two arms.</li>
+					  <li>Some humans have fewer than two arms.</li>
+					  <li>Therefore, the arithmetic mean number of arms per person is slightly below two.</li>
+					  <li>If you have two arms, you are therefore slightly above average.</li>
+					</ul>
+				  	<aside class="notes">
+				  	  Some people have fewer than two arms and almost nobody has more, so the mean is slightly below 2. Everyone with two arms is above it.
+				  	</aside>
+				  </section>
+				</section>
+
+				<!-- MISLEADING SAMPLES -->
+				<section>
+				  <h2>Misleading samples</h2>
+					<aside class="notes">
+					  A statistic is only as good as the sample it comes from, and how that sample was chosen.
+					</aside>
+				</section>
+
+				<section>
+				  <section>
+					<blockquote style="text-align: center;">
+					  8 out of 10 dentists recommend our toothpaste.
+					</blockquote>
+				  	<aside class="notes">
+				  	  A claim in the style of toothpaste advertising. 8 out of 10 hides how many dentists were asked and who they were. Real case: in 2007 the UK Advertising Standards Authority ruled that Colgate's claim "More than 80% of dentists recommend Colgate" was misleading (<a href="https://marketinglaw.osborneclarke.com/retailing/colgates-80-of-dentists-recommend-claim-under-fire/">summary</a>). The survey let dentists recommend several brands, and a competitor got nearly as many recommendations.
+				  	</aside>
+				  </section>
+				  <section class="titled">
+					<h3>Selection bias</h3>
+					<ul>
+					  <li>Which dentists were included in the survey?</li>
+					  <li>How were they selected?</li>
+					  <li>How many dentists were asked in total?</li>
+					  <li>A sample can give a misleading result if it is not representative of the population.</li>
+					</ul>
+				  	<aside class="notes">
+				  	  Easy ways to get a good number: ask very few dentists, ask only dentists who like the brand, repeat the survey and publish the best result, let them recommend several brands, or use a vague word like "recommend". If the sample is chosen by something related to the answer, the result says little about dentists in general.
+				  	</aside>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+					<a href="https://en.wikipedia.org/wiki/Survivorship_bias" style="display: block; text-align: center;">
+					  <img src="media/survivor_bias.svg" alt="Survivorship bias" style="width: 70%; height: auto;">
+					</a>
+				  	<aside class="notes">
+				  	  Diagram of an aircraft with the bullet holes of returning planes marked. Illustration from <a href="https://en.wikipedia.org/wiki/Survivorship_bias">Wikipedia</a>.
+				  	</aside>
+				  </section>
+				  <section class="titled">
+					<h3>Survivorship bias</h3>
+					<ul>
+					  <li>We only observe the aircraft that successfully returned from combat.</li>
+					  <li>The bullet holes show where an aircraft can be hit and still survive.</li>
+					  <li>The missing data are the aircraft that were hit elsewhere and did not return.</li>
+					  <li>Therefore, the areas with few bullet holes are the areas that should be reinforced.</li>
+					</ul>
+				  	<aside class="notes">
+				  	  The story is usually told about the mathematician Abraham Wald and US bombers in World War II. His point was to reinforce the places where returning planes had no holes, because planes hit there did not return.
+				  	</aside>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+					<blockquote style="text-align: center;">
+					  No coin is fair and I can prove it.
+					</blockquote>
+				  	<aside class="notes">
+				  	  A claim about optional stopping. The following slide explains why it is a trick.
+				  	</aside>
+				  </section>
+				  <section class="titled">
+					<h3>Selective stopping</h3>
+					<ul>
+					  <li>With a small sample, random fluctuations can make a fair coin look biased.</li>
+					  <li>Keep flipping the coin until the results look sufficiently unusual.</li>
+					  <li>If you stop only when the data support your claim, the sample is no longer neutral.</li>
+					  <li>The stopping rule becomes part of the experiment and affects the conclusion.</li>
+					</ul>
+				  	<aside class="notes">
+				  	  A fair coin will, at some point, produce a stretch of flips that looks unusual. If you are allowed to choose when to stop, you can almost always stop at such a moment. The conclusion then reflects the stopping rule, not the coin.
+				  	</aside>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+					<blockquote style="text-align: center;">
+					  Drinking water improves your luck at dice.
+					</blockquote>
+				  	<aside class="notes">
+				  	  The claim is tested by only drinking water after bad results, which is where regression to the mean helps most.
+				  	</aside>
+				  </section>
+				  <section class="titled">
+					<h3>Regression to the mean</h3>
+					<ul>
+					  <li>Suppose you start drinking water immediately after an unusually bad series of dice rolls.</li>
+					  <li>Extreme results are usually followed by results closer to the average.</li>
+					  <li>Your next rolls are therefore likely to improve even if the water has no effect.</li>
+					  <li>The improvement can then be incorrectly attributed to drinking water.</li>
+					</ul>
+				  	<aside class="notes">
+				  	  Because you only drink water after bad results, the next results are likely to be better anyway: extreme results are usually followed by more average ones. Daniel Kahneman describes a version of this in <em>Thinking, Fast and Slow</em>: flight instructors saw that pilots did worse after praise and better after criticism, but the same pattern appears without any feedback.
+				  	</aside>
+				  </section>
+				</section>
+
+				<!-- ENDING -->
+				<section>
+				  <blockquote style="text-align: center;">
+					Like people, data will admit to anything if you torture it long enough.
+				  </blockquote>
+					<aside class="notes">
+					  Usually attributed to the economist Ronald Coase, in various wordings. Searching until the data says what you want is a statistical form of everything on the previous slides.
+					</aside>
+				</section>
+
+				<!-- SOURCES -->
+				<section class="titled">
+				  <h3>Inspired by...</h3>
+				  <ul>
+					<li><a href="https://tylervigen.com/spurious-correlations">"Spurious Correlations" by Tyler Vigen</a></li>
+					<li><a href="https://en.wikipedia.org/wiki/How_to_Lie_with_Statistics">"How to Lie with Statistics" by Darrell Huff</a></li>
+					<li><a href="https://en.wikipedia.org/wiki/List_of_fallacies">Wikipedia</a></li>
+					<li><a href="https://youtu.be/UVWJYAgX5Es?si=mIxOi1KTs0S982Af">"Statistik, wenn Zahlen lügen" by Leo Warnov</a></li>
+					<li><a href="https://www.fallacyfiles.org/whatarff.html#AdPolicy">"Fallacy Files" by Gary N. Curtis</a></li>
+				  </ul>
+					<aside class="notes">
+					  These are the sources and explanations I learned from.
+					</aside>
+				</section>
 			</div>
 		</div>
 
@@ -26,6 +365,7 @@
 		<script src="../reveal.js/plugin/notes/notes.js"></script>
 		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
 		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../reveal.js/plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -34,7 +374,7 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
 			});
 		</script>
 	</body>
