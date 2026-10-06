@@ -2722,6 +2722,11 @@ input, select, textarea {
 					object-fit: cover;
 				}
 
+				/* the video carries inline fallback sizes (height: auto) for stale cached CSS; override them here */
+				.spotlight.fill .image video {
+					height: 100% !important;
+				}
+
 				/* Embeds stretch to the row too; min-height keeps a 16:9 floor (image column is 40vw wide) */
 				.spotlight.fill .image:has(.embed) {
 					min-height: 22.5vw;
@@ -2834,6 +2839,7 @@ input, select, textarea {
 				.spotlight.fill .image video {
 					display: block;
 					width: 100%;
+					height: auto !important;
 				}
 
 				.spotlight.fill .image:has(.embed) {

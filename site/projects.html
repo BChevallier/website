@@ -9,7 +9,7 @@
 		<title>Projects - BChevallier</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css?v=20261006" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -58,9 +58,13 @@
 						<section id="two" class="wrapper alt style2">
 							<section class="spotlight fill">
 								<div class="image">
+									<!-- inline size styles keep the video inside its column even with a stale cached stylesheet -->
 									<video
 									  src="https://cdn.jsdelivr.net/gh/BChevallier/JigglingAtoms@6256cf7/media/condensation.mp4"
-									  autoplay muted loop playsinline preload="auto"
+									  poster="images/jiggling_atoms_poster.jpg"
+									  width="960" height="640"
+									  style="display: block; width: 100%; max-width: 100%; height: auto; object-fit: cover;"
+									  autoplay muted loop playsinline preload="metadata"
 									  aria-label="Simulated gas atoms cooling down and condensing into droplets">
 									</video>
 								</div>
