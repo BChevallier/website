@@ -2720,6 +2720,17 @@ input, select, textarea {
 					object-fit: cover;
 				}
 
+				/* Embeds stretch to the row too; min-height keeps a 16:9 floor (image column is 40vw wide) */
+				.spotlight.fill .image:has(.embed) {
+					min-height: 22.5vw;
+				}
+
+				.spotlight.fill .image .embed {
+					position: absolute;
+					inset: 0;
+					aspect-ratio: auto;
+				}
+
 			.spotlight.fill .content {
 				padding-bottom: 2em;
 			}
@@ -2810,6 +2821,15 @@ input, select, textarea {
 				.spotlight.fill .image img {
 					position: static;
 					height: auto;
+				}
+
+				.spotlight.fill .image:has(.embed) {
+					min-height: 0;
+				}
+
+				.spotlight.fill .image .embed {
+					position: relative;
+					aspect-ratio: 16 / 9;
 				}
 
 				.spotlight .content {
