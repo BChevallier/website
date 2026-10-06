@@ -17,8 +17,8 @@ PARTIALS_DIR = SITE_DIR / "partials"
 
 # partial name -> pages that should contain its <!-- name:start/end --> block
 PARTIALS = {
-    "nav": ["index.html", "presentations.html", "publications.html", "imprint.html"],
-    "footer": ["index.html", "presentations.html", "publications.html", "imprint.html"],
+    "nav": ["index.html", "presentations.html", "projects.html", "imprint.html"],
+    "footer": ["index.html", "presentations.html", "projects.html", "imprint.html"],
 }
 
 

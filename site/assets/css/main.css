@@ -2704,6 +2704,26 @@ input, select, textarea {
 				display: block;
 			}
 
+		/* Projects: image fills the full row height, cropping as needed */
+		.spotlight.fill {
+			align-items: stretch;
+		}
+
+			.spotlight.fill .image {
+				position: relative;
+			}
+
+				.spotlight.fill .image img {
+					position: absolute;
+					inset: 0;
+					height: 100%;
+					object-fit: cover;
+				}
+
+			.spotlight.fill .content {
+				padding-bottom: 2em;
+			}
+
 		.spotlight .content {
 			padding: 2em 4em 0.1em 4em ;
 			-moz-order: 2;
@@ -2785,6 +2805,11 @@ input, select, textarea {
 
 				.spotlight .image {
 					width: 100%;
+				}
+
+				.spotlight.fill .image img {
+					position: static;
+					height: auto;
 				}
 
 				.spotlight .content {
