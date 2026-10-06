@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>The Euler-Lagrange Equation</title>
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- INTRODUCTION -->
+				<section class="titled">
+				  <h3>The most powerful equation in all of mathematics*</h3>
+
+				  <div class="math" style="text-align: center; font-size: 1.3em; margin-top: 1.5em;">
+					$$\frac{\partial F}{\partial g}-\frac{d}{dx}\frac{\partial F}{\partial g'}=0$$
+				  </div>
+
+				  <small style="display: block; margin-top: 3em; font-size: 0.5em; color: #999;">
+					*Probably not, but "One of many very cool and useful equations" makes for a bad title.
+				  </small>
+					  <aside class="notes">
+					This is the Euler-Lagrange equation. It is a tool for finding functions that make a certain quantity as large or as small as possible. The following slides build up to what that means and how to read the equation.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>The basics of optimisation.</h3>
+
+				  <ul>
+					<li class="fragment">There is some quantity you care about. We call it the <strong>metric</strong>.</li>
+					<li class="fragment">You can influence its value through your choices.</li>
+					<li class="fragment">You want this value to be as big as possible.*</li>
+					<li class="fragment"><strong>Optimisation</strong> is choosing in a way that makes the value you care about as big as possible.</li>
+				  </ul>
+
+				  <small class="fragment" style="display: block; margin-top: 2em; font-size: 0.5em; color: #999;">
+					*If you want it to be as small as possible, just multiply it by -1. Suddenly you want it to be as big as possible.
+				  </small>
+					  <aside class="notes">
+					Minimising a value and maximising its negative are the same problem, so only maximising is discussed here.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Examples for optimisation</h3>
+
+				  <ul>
+					<li class="fragment fade-in" data-fragment-index="1">
+					  <span class="fragment semi-fade-out" data-fragment-index="6">Maximising your average </span><strong>speed</strong><span class="fragment semi-fade-out" data-fragment-index="6"> on a run.</span>
+					</li>
+					<li class="fragment fade-in" data-fragment-index="2">
+					  <span class="fragment semi-fade-out" data-fragment-index="6">Minimising </span><strong>time spent in queues</strong><span class="fragment semi-fade-out" data-fragment-index="6"> at Disneyland.</span>
+					</li>
+					<li class="fragment fade-in" data-fragment-index="3">
+					  <span class="fragment semi-fade-out" data-fragment-index="6">Maximising </span><strong>area / price</strong><span class="fragment semi-fade-out" data-fragment-index="6"> when buying pizza.</span>
+					</li>
+					<li class="fragment fade-in" data-fragment-index="4">
+					  <span class="fragment semi-fade-out" data-fragment-index="6">Maximising </span><strong>profit</strong><span class="fragment semi-fade-out" data-fragment-index="6"> when selling ice cream.</span>
+					</li>
+					<li class="fragment fade-in" data-fragment-index="5">
+					  <span class="fragment semi-fade-out" data-fragment-index="6">Minimising </span><strong>travel time</strong><span class="fragment semi-fade-out" data-fragment-index="6"> to get somewhere.</span>
+					</li>
+				  </ul>
+
+				  <h4 class="fragment fade-in" data-fragment-index="6" style="margin-top: 1.5em;">Different metric. Same principle.</h4>
+					  <aside class="notes">
+					All of these have the same structure: a value to maximise or minimise, and choices that influence it. Only the metric changes.
+				  </aside>
+				</section>
+
+				<!-- DISCRETE CHOICES -->
+				<section>
+				  <section class="titled">
+					<h3>Optimising a value from a discrete spectrum</h3>
+
+					<table style="width: 75%; font-size: 0.65em; text-align: center; margin: 0 auto;">
+					  <thead>
+						<tr><th></th><th>A</th><th>B</th><th>C</th></tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td></td>
+						  <td><a href="https://www.imdb.com/title/tt0120737/"><img src="media/lotr.jpg" alt="Movie A poster" style="height: 220px; margin: 0;"></a></td>
+						  <td><a href="https://www.imdb.com/title/tt15398776/"><img src="media/openheimer.jpg" alt="Movie B poster" style="height: 220px; margin: 0;"></a></td>
+						  <td><a href="https://www.imdb.com/title/tt0050083/"><img src="media/12angrymen.jpg" alt="Movie C poster" style="height: 220px; margin: 0;"></a></td>
+						</tr>
+						<tr><td><strong>Runtime</strong></td><td>178 min</td><td>180 min</td><td>96 min</td></tr>
+						<tr><td><strong>IMDb</strong></td><td>8.9</td><td>8.2</td><td>9.0</td></tr>
+						<tr><td><strong>Price</strong></td><td>9.99€</td><td>14.99€</td><td>7.99€</td></tr>
+					  </tbody>
+					</table>
+						<aside class="notes">
+					Three movies with a runtime, an IMDb rating and a price. The numbers are the ones shown on the slide.
+				  </aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Optimising a value from a discrete spectrum.</h3>
+					<ul>
+					  <li class="fragment">Which one would you choose?<span class="fragment"> It depends on the metric.</span></li>
+					  <li class="fragment">Maximise watch time?</li>
+					  <li class="fragment">Maximise IMDb rating?</li>
+					  <li class="fragment">Minimise price?</li>
+					  <li class="fragment">Minimise price per minute?</li>
+					</ul>
+						<aside class="notes">
+					With the numbers from the table: longest runtime is B (180 min), highest rating is C (9.0), lowest price is C (7.99€). Price per minute is 0.056€ for A, 0.083€ for B and 0.083€ for C, so A is cheapest per minute. Each metric gives a different winner.
+				  </aside>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+					<h3 style="text-align: center;">Looking for more exercises?</h3>
+					<div style="display: flex; flex-direction: column; align-items: center; margin-top: 0.5em;">
+					  <div style="width: 24px; height: 30px; background: white;"></div>
+					  <div style="width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-top: 25px solid white;"></div>
+					</div>
+						<aside class="notes">
+					Optional exercises for readers who want to practise.
+				  </aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Choice optimization. Ex. 1.</h3>
+					<ul>
+					  <li>Find a pizzeria in your area. Which pizza has the best <strong>area-to-price ratio</strong>?</li>
+					</ul>
+						<aside class="notes">
+					The area of a round pizza is π · (diameter / 2)². Divide it by the price for each pizza and compare.
+				  </aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Choice optimization. Ex. 2.</h3>
+					<ul>
+					  <li>Find a car with the lowest fuel consumption per 100 km.</li>
+					  <li>
+						<ul>
+						  <li class="fragment">Take current fuel prices into account. Which car is cheapest to drive?</li>
+						  <li class="fragment">Include the purchase price, assuming you'll drive it for 100,000 km.</li>
+						  <li class="fragment">Include insurance costs.</li>
+						  <li class="fragment"><strong>What else could you take into account?</strong></li>
+						</ul>
+					  </li>
+					</ul>
+						<aside class="notes">
+					Each extra point changes the metric from fuel use to total cost, and with it possibly the best car.
+				  </aside>
+				  </section>
+				</section>
+
+				<!-- CONTINUOUS: FARMER -->
+				<section>
+				  <section class="titled">
+					<h3>Optimising a value from a continuous spectrum</h3>
+
+					<div style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+					  <div style="width: 58%;">
+						<ul>
+						  <li class="fragment">You are a farmer.</li>
+						  <li class="fragment">You have <strong>100 m of fence</strong>.</li>
+						  <li class="fragment">You want your sheep to have as much space as possible.</li>
+						  <li class="fragment">The fence must form a <strong>rectangle</strong>.</li>
+						  <li class="fragment"><strong>What is the optimal shape?</strong></li>
+						</ul>
+					  </div>
+
+					  <div class="fragment" style="width: 35%; display: flex; justify-content: center;">
+						<div style="width: 220px; height: 130px; border: 3px solid white; position: relative;">
+						  <span style="position: absolute; bottom: -1.5em; left: 50%; transform: translateX(-50%);">a</span>
+						  <span style="position: absolute; left: -1.2em; top: 50%; transform: translateY(-50%);">b</span>
+						</div>
+					  </div>
+					</div>
+						<aside class="notes">
+					Unlike the movies, the side lengths can take any value, not just one of a few. A rectangle with sides a and b and a fence of total length 100 m.
+				  </aside>
+				  </section>
+
+				  <section class="titled" data-auto-animate>
+					<h3>Solution</h3>
+
+					<div style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+					  <div style="width: 58%;">
+						<div style="margin: -0.4em 0;" class="math fragment" data-fragment-index="1">$$2a + 2b = 100\,\mathrm{m}$$</div>
+						<div style="margin: -0.4em 0;" class="math fragment" data-fragment-index="2">$$b = 50\,\mathrm{m} - a$$</div>
+						<div style="margin: -0.4em 0;" class="math fragment" data-fragment-index="3">$$A = ab$$</div>
+						<div style="margin: -0.4em 0;" class="math fragment" data-fragment-index="4">$$A(a) = a(50\,\mathrm{m} - a)$$</div>
+						<div style="margin: -0.4em 0;" class="math fragment" data-fragment-index="5">$$A'(a) = -2a + 50\,\mathrm{m}$$</div>
+						<div style="margin: -0.4em 0;" class="math fragment" data-fragment-index="6">$$A'(a)=0 \quad \Rightarrow \quad a=25\,\mathrm{m}$$</div>
+					  </div>
+
+					  <div style="width: 35%; display: flex; flex-direction: column; align-items: center;">
+						<div style="width: 220px; height: 130px; border: 3px solid white; position: relative;" data-id="pasture">
+						  <span style="position: absolute; bottom: -1.5em; left: 50%; transform: translateX(-50%);">a</span>
+						  <span style="position: absolute; left: -1.2em; top: 50%; transform: translateY(-50%);">b</span>
+						</div>
+					  </div>
+					</div>
+						<aside class="notes">
+					The fence gives 2a + 2b = 100 m, so b = 50 m - a. The area is A = a · b, which is now a function of a alone. A maximum of a smooth function is where its derivative is 0: A'(a) = -2a + 50 m = 0, so a = 25 m.
+				  </aside>
+				  </section>
+
+				  <section class="titled" data-auto-animate>
+					<h3>Solution</h3>
+
+					<div style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+					  <div style="width: 58%;">
+						<div style="margin: -0.4em 0;" class="math">$$2a + 2b = 100\,\mathrm{m}$$</div>
+						<div style="margin: -0.4em 0;" class="math">$$b = 50\,\mathrm{m} - a$$</div>
+						<div style="margin: -0.4em 0;" class="math">$$A = ab$$</div>
+						<div style="margin: -0.4em 0;" class="math">$$A(a) = a(50\,\mathrm{m} - a)$$</div>
+						<div style="margin: -0.4em 0;" class="math">$$A'(a) = -2a + 50\,\mathrm{m}$$</div>
+						<div style="margin: -0.4em 0;" class="math">$$A'(a)=0 \quad \Rightarrow \quad a=25\,\mathrm{m}$$</div>
+						<div style="margin: -0.4em 0;" class="math fragment">$$a=b=25\,\mathrm{m}$$</div>
+					  </div>
+
+					  <div style="width: 35%; display: flex; flex-direction: column; align-items: center;">
+						<div data-id="pasture" style="width: 160px; height: 160px; border: 3px solid white; position: relative;">
+						  <span style="position: absolute; bottom: -1.5em; left: 50%; transform: translateX(-50%);">25m</span>
+						  <span style="position: absolute; left: -2.5em; top: 50%; transform: translateY(-50%);">25m</span>
+						</div>
+						<strong style="margin-top: 2em;">The optimum is a square.</strong>
+					  </div>
+					</div>
+						<aside class="notes">
+					With a = 25 m, b = 50 m - 25 m = 25 m. Of all rectangles with the same perimeter, the square encloses the largest area (625 m²).
+				  </aside>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+					<h3 style="text-align: center;">Looking for more exercises?</h3>
+					<div style="display: flex; flex-direction: column; align-items: center; margin-top: 0.5em;">
+					  <div style="width: 24px; height: 30px; background: white;"></div>
+					  <div style="width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-top: 25px solid white;"></div>
+					</div>
+						<aside class="notes">
+					Optional exercises for readers who want to practise.
+				  </aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Optimising Functions. Ex. 3.</h3>
+					<ul>
+					  <li>
+						The number of sales as a function of price is:
+						<div class="math">$$S(\text{price})=1000\cdot e^{-\frac{\text{price}}{\text{€}}}$$</div>
+					  </li>
+					  <li>What price <strong>maximises revenue</strong>?</li>
+					</ul>
+						<aside class="notes">
+					Revenue is price times sales: R(p) = p · 1000 · e^(-p/€). Its derivative is 1000 · e^(-p/€) · (1 - p/€), which is 0 at a price of 1€.
+				  </aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Optimising Functions. Ex. 4.</h3>
+					<ul>
+					  <li>
+						Fuel consumption per hour as a function of speed is:
+						<div class="math" style="font-size: 0.85em;">$$C(v)=0.005\frac{h^2L}{km^3}\left(v-10\frac{km}{h}\right)^3+5\frac{L}{h}$$</div>
+					  </li>
+					  <li>What speed <strong>minimises the fuel consumed</strong> over a fixed-distance trip?</li>
+					</ul>
+						<aside class="notes">
+					For a fixed distance the fuel used is proportional to C(v) / v, the consumption per kilometre. Writing u = v - 10 km/h, setting its derivative to 0 gives u³ + 15u² - 500 = 0, which is satisfied by u = 5, so v = 15 km/h. The numbers in the model are made up for the exercise.
+				  </aside>
+				  </section>
+				</section>
+
+				<!-- FUNCTIONALS -->
+				<section class="titled">
+				  <h3>Optimising a functional.</h3>
+
+				  <div style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+					<div style="width: 48%;">
+					  <ul>
+						<li class="fragment">You want to get from A to B.</li>
+						<li class="fragment">You can choose <strong>any path</strong> connecting them.</li>
+						<li class="fragment">You want to minimise the length of the path.</li>
+						<li class="fragment"><strong>What is the optimal path?</strong></li>
+					  </ul>
+					</div>
+					<div style="width: 45%; display: flex; justify-content: center;">
+					  <img src="media/path1.png" alt="Several possible paths from A to B" style="max-height: 420px; width: auto;">
+					</div>
+				  </div>
+					  <aside class="notes">
+					Now the thing being chosen is not a number but a whole path. A path is a function, and the quantity to minimise (its length) takes that function as input. Such a quantity is called a functional.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Optimising a functional.</h3>
+
+				  <div style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+					<div style="width: 48%;">
+					  <ul>
+						<li class="fragment">You can express most paths with a function y(x).</li>
+						<li class="fragment">How would you compute the length l of a path described by f(x)?</li>
+					  </ul>
+					</div>
+					<div style="width: 45%; display: flex; justify-content: center;">
+					  <img class="fragment" src="media/path.png" alt="A path described by a function y(x)" style="max-height: 420px; width: auto;">
+					</div>
+				  </div>
+					  <aside class="notes">
+					Paths that double back on themselves cannot be written as y(x), which is why the slide says "most paths".
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Optimising a functional.</h3>
+
+				  <ul style="font-size: 0.8em;">
+					<li class="fragment">
+					  Since $ds=\sqrt{dx^2+dy^2}$ and $\frac{dy}{dx}=y'(x)$, the path length $S$ of $y(x)$ can be expressed as:
+					  $$\int_A^B\sqrt{dx^2+y'(x)^2dx^2}$$
+					</li>
+					<li class="fragment">
+					  Factoring out $dx$ gets us:
+					  $$S=\int_A^B\sqrt{1+y'(x)^2}dx$$
+					</li>
+				  </ul>
+					  <aside class="notes">
+					A tiny piece of the path has length ds, given by the Pythagorean theorem. Adding up all pieces from A to B gives the integral. The result S is one number, but it depends on the whole function y(x).
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Optimising a functional.</h3>
+
+				  <ul>
+					<li class="fragment">$S$ is not dependent on a variable. It depends on a function ($y(x)$).</li>
+					<li class="fragment">This means that the classical differentiate-and-set-to-0 approach doesn't work.</li>
+					<li class="fragment">
+					  There's an intuitive, but <a href="https://www.youtube.com/watch?v=VCHFCXgYdvY">very long</a> derivation for the solution to the problem, but we'll settle for learning how to use it.
+					</li>
+				  </ul>
+					  <aside class="notes">
+					The farmer problem had one number to tune (a). Here there are infinitely many, one for each point of the path. The derivation of the solution is in the linked video.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>The most powerful equation in all of mathematics*</h3>
+
+				  <div class="math" style="text-align: center; font-size: 1.1em; margin-top: 1em;">
+					$$\underbrace{\frac{\partial F}{\partial g}}_{\text{effect of }g(x)}-\underbrace{\frac{d}{dx}}_{\text{change along }x}\;\;\underbrace{\frac{\partial F}{\partial g'}}_{\text{effect of }g'(x)}=0$$
+				  </div>
+
+				  <small style="display: block; margin-top: 2em; font-size: 0.5em; color: #999;">
+					*Still probably not, but "One of many very cool and useful equations" makes for a bad title.
+				  </small>
+					  <aside class="notes">
+					The Euler-Lagrange equation. For a functional S = ∫ F(x, g, g') dx, the function g that makes S stationary (a maximum, a minimum or a saddle point) has to satisfy this equation. F is whatever sits inside the integral. The next slide uses it on the path problem, and the problems after that use it on four more. </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Using it: the shortest path.</h3>
+
+				  <ul>
+					<li class="fragment">
+					  Here $g=y$ and $F=\sqrt{1+y'^2}$, so $\frac{\partial F}{\partial y}=0$ and $\frac{\partial F}{\partial y'}=\frac{y'}{\sqrt{1+y'^2}}$.
+					</li>
+					<li class="fragment">
+					  The equation becomes $\frac{d}{dx}\frac{y'}{\sqrt{1+y'^2}}=0$, so $\frac{y'}{\sqrt{1+y'^2}}$ is constant.
+					</li>
+					<li class="fragment">
+					  That is only possible if $y'$ is constant, so $y(x)=mx+c$.
+					</li>
+					<li class="fragment">
+					  <strong>The shortest path between two points is a straight line.</strong> <span class="fragment">Wow...</span>
+					</li>
+				  </ul>
+					  <aside class="notes">
+					The result is not surprising, which is the point: the equation reproduces what we already know, without us having to guess the answer. F does not depend on y itself, only on y', so the first term vanishes. A constant y' means a constant slope, which is a straight line. The constants m and c are fixed by requiring the line to pass through A and B.
+				  </aside>
+				</section>
+
+				<!-- MORE EULER-LAGRANGE -->
+				<section class="titled">
+				  <h3>How to use the magic box.</h3>
+
+				  <ol>
+					<li class="fragment">Write what you want to optimise as $\int F(x,g,g')\,dx$.</li>
+					<li class="fragment">Compute $\frac{\partial F}{\partial g}$ and $\frac{\partial F}{\partial g'}$.</li>
+					<li class="fragment">Plug them into the equation.</li>
+					<li class="fragment">Solve the resulting differential equation for $g(x)$.</li>
+					<li class="fragment">Use the start and end point to fix the constants.</li>
+				  </ol>
+					  <aside class="notes">
+					The straight-line slide followed exactly these steps. In step 1, F can depend on x, on the function g and on its slope g'. Step 4 usually gives a differential equation, which can be easy (as for the straight line) or hard. In step 5 the constants (m and c for the line) are chosen so that the function passes through the given points.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Where we'll use it.</h3>
+
+				  <ul>
+					<li class="fragment"><strong>Water in a pipe:</strong> the speed profile with the least viscous loss.</li>
+					<li class="fragment"><strong>A rolling ball:</strong> the path with the shortest travel time.</li>
+					<li class="fragment"><strong>A hanging chain:</strong> the shape with the lowest potential energy.</li>
+					<li class="fragment"><strong>Spinning water:</strong> the surface with the lowest potential energy.</li>
+				  </ul>
+					  <aside class="notes">
+					Each example is a functional: viscous loss, travel time, potential energy and potential energy again. The Euler-Lagrange equation (with a multiplier where there is a fixed amount of something) gives the shape that optimises it. The pipe and the spinning water are physical systems that settle into such a shape, the brachistochrone is a question about the best path, and the hanging chain is both. The Veritasium video in the sources explains why nature so often behaves this way.
+				  </aside>
+				</section>
+
+				<!-- PROBLEM 1: PIPE -->
+				<section>
+				  <section>
+					<h3 style="text-align: center;">Why is water fastest in the middle of a pipe?</h3>
+					<div style="display: flex; flex-direction: column; align-items: center; margin-top: 0.5em;">
+					  <div style="width: 24px; height: 30px; background: white;"></div>
+					  <div style="width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-top: 25px solid white;"></div>
+					</div>
+					  <aside class="notes">
+					The speed of the water depends on the distance from the centre of the pipe. Fast in the middle and zero at the wall is easy to guess, but the exact shape is a whole function. The slides below derive it. Example adapted from my own notes.
+				  </aside>
+				  </section>
+				  <section class="titled">
+					<h3>The problem.</h3>
+					<ul>
+					  <li class="fragment">Water flows through a pipe of radius $R$ at a fixed flow rate $D_0$.</li>
+					  <li class="fragment">It sticks to the wall: $u(R)=0$.</li>
+					  <li class="fragment">We want the speed profile $u(r)$, where $r$ is the distance from the centre.</li>
+					</ul>
+					  <aside class="notes">
+					The pipe is assumed to be rotationally symmetric, so the speed only depends on r.
+				  </aside>
+				  </section>
+				<section class="titled">
+				  <h3>Setting it up.</h3>
+
+				  <ul style="font-size: 0.8em;">
+					<li class="fragment">Assume nature picks the profile with the least viscous loss:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.35em 0; font-size: 0.75em;">
+					$$E=\int_0^R \pi\mu\left(\frac{du}{dr}\right)^2 r\,dr$$
+				  </div>
+				  <ul style="font-size: 0.8em;">
+					<li class="fragment">But the flow rate is fixed. The total flow has to be $D_0$:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.35em 0; font-size: 0.75em;">
+					$$\int_0^R u(r)\,r\,dr=\frac{D_0}{2\pi}$$
+				  </div>
+					  <aside class="notes">
+					The viscous loss per area is taken as (μ/2)·(du/dr)², where μ is the viscosity. Integrating it over the circular cross-section in polar coordinates gives E. The assumption that the flow minimises viscous loss is the starting point of this example (slow, viscous flow). The flow rate is the integral of the speed over the cross-section, which in polar coordinates gives the condition. In the notation of the equation, r plays the role of x and u plays the role of g.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>A multiplier for the flow rate.</h3>
+
+				  <ul>
+					<li class="fragment">We cannot pick any $u(r)$, so we add the condition to the functional with a multiplier $\lambda$:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$F=\pi\mu\,u'^2\,r+\lambda\,u\,r$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$\frac{\partial F}{\partial u}-\frac{d}{dr}\frac{\partial F}{\partial u'}=0 \;\Rightarrow\; \frac{d}{dr}\left(u'\,r\right)=\frac{\lambda r}{2\pi\mu}$$
+				  </div>
+					  <aside class="notes">
+					The Lagrange multiplier λ is a tool for optimising under a condition: λ times the condition is added to the functional, and λ is fixed at the end by requiring the condition to hold. The constant term −λD₀/2π that also appears does not depend on u and drops out. Here ∂F/∂u = λr and ∂F/∂u' = 2πμ·u'·r. Plugging both into the equation and dividing by 2πμ gives a differential equation for u(r). The conditions u(R) = 0 and u'(0) = 0 (no kink at the centre) are kept in mind and applied afterwards.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>Solving it.</h3>
+
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0; font-size: 0.8em;">
+					$$u'\,r=\frac{\lambda}{4\pi\mu}r^2+C_1$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0; font-size: 0.8em;">
+					$$u'(0)=0 \;\Rightarrow\; C_1=0 \;\Rightarrow\; u'=\frac{\lambda}{4\pi\mu}r$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0; font-size: 0.8em;">
+					$$u(r)=\frac{\lambda}{8\pi\mu}r^2+C_2$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0; font-size: 0.8em;">
+					$$u(R)=0 \;\Rightarrow\; u(r)=\frac{\lambda}{8\pi\mu}\left(r^2-R^2\right)$$
+				  </div>
+					  <aside class="notes">
+					Integrating once gives u'·r. If C₁ were not 0, u' would grow like 1/r towards the centre, which contradicts the condition that the profile has no kink at r = 0. A second integration gives u. The no-slip condition at the wall fixes C₂.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>Fixing the multiplier.</h3>
+
+				  <div class="math fragment" style="text-align: center; margin: -0.3em 0; font-size: 0.85em;">
+					$$\int_0^R \frac{\lambda}{8\pi\mu}\left(r^2-R^2\right)r\,dr=-\frac{\lambda R^4}{32\pi\mu}=\frac{D_0}{2\pi}$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.3em 0; font-size: 0.85em;">
+					$$\lambda=-\frac{16\,D_0\,\mu}{R^4}$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.3em 0; font-size: 0.85em;">
+					$$u(r)=\frac{2D_0}{\pi R^4}\left(R^2-r^2\right)$$
+				  </div>
+				  <p class="fragment" style="text-align: center;"><strong>A parabola.</strong></p>
+					  <aside class="notes">
+					The flow-rate condition determines λ. Substituting it back gives the speed profile: fastest in the middle, zero at the wall. As a check, integrating this profile over the cross-section gives back exactly D₀. This parabolic profile is the known result for slow, steady flow in a pipe (Hagen-Poiseuille flow), here obtained from the principle "least viscous loss for a given flow rate".
+				  </aside>
+				</section>
+				</section>
+
+				<!-- PROBLEM 2: BRACHISTOCHRONE -->
+				<section>
+				  <section>
+					<h3 style="text-align: center;">What is the fastest way for a ball to roll down?</h3>
+					<div style="display: flex; flex-direction: column; align-items: center; margin-top: 0.5em;">
+					  <div style="width: 24px; height: 30px; background: white;"></div>
+					  <div style="width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-top: 25px solid white;"></div>
+					</div>
+					  <aside class="notes">
+					This is the brachistochrone problem, posed by Johann Bernoulli in 1696. It is one of the problems that led to the calculus of variations, the field the Euler-Lagrange equation belongs to. The straight line is the shortest path, but the question is about the fastest one.
+				  </aside>
+				  </section>
+				  <section class="titled">
+					<h3>The problem.</h3>
+					<ul>
+					  <li class="fragment">A ball rolls from A down to B. No friction, only gravity.</li>
+					  <li class="fragment">The straight line is the shortest path. Is it also the <strong>fastest</strong>?</li>
+					  <li class="fragment">We want the best path $y(x)$.</li>
+					</ul>
+					  <aside class="notes">
+					The quantity to minimise is now the travel time instead of the length.
+				  </aside>
+				  </section>
+				<section class="titled">
+				  <h3>Setting it up.</h3>
+
+				  <ul style="font-size: 0.8em;">
+					<li class="fragment">Measure $y$ downward from A. Energy conservation gives the speed: $v=\sqrt{2gy}$.</li>
+					<li class="fragment">Time is path length divided by speed:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.35em 0; font-size: 0.75em;">
+					$$T=\int \frac{\sqrt{1+y'^2}}{\sqrt{2gy}}\,dx$$
+				  </div>
+				  <ul style="font-size: 0.8em;">
+					<li class="fragment">Dropping the constant: $F=\sqrt{\dfrac{1+y'^2}{y}}$.</li>
+				  </ul>
+					  <aside class="notes">
+					The ball starts at rest at A, so its kinetic energy ½mv² equals the lost height energy mgy, which gives v = √(2gy). A tiny piece of the path has length ds = √(1+y'²)dx and takes ds / v. Adding up all pieces gives T. The constant factor 1/√(2g) does not change which path is fastest, so it is dropped.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>A shortcut.</h3>
+
+				  <ul>
+					<li class="fragment">$F$ does not contain $x$. Then the equation can be integrated once:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$F-y'\frac{\partial F}{\partial y'}=\text{const}$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$\frac{1}{\sqrt{y}\sqrt{1+y'^2}}=\text{const} \;\Rightarrow\; y\left(1+y'^2\right)=k$$
+				  </div>
+					  <aside class="notes">
+					This identity is named after Eugenio Beltrami and follows directly from the Euler-Lagrange equation: its derivative with respect to x is y'·(∂F/∂y − d/dx ∂F/∂y'), which is 0 when the equation holds. It only works if F has no explicit x. Here ∂F/∂y' = y' / (√y·√(1+y'²)), and F minus y' times that simplifies to 1 / (√y·√(1+y'²)). Writing the constant as 1/√k gives y(1+y'²) = k.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>The fastest path.</h3>
+
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$x=\frac{k}{2}\left(\theta-\sin\theta\right)$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$y=\frac{k}{2}\left(1-\cos\theta\right)$$
+				  </div>
+				  <p class="fragment" style="text-align: center;"><strong>A cycloid:</strong> the path of a point on a rolling wheel.</p>
+					  <aside class="notes">
+					Check: with this parametrisation y' = sin θ / (1 − cos θ) = cot(θ/2), so 1 + y'² = 1 / sin²(θ/2), and y = k·sin²(θ/2). Then y(1 + y'²) = k, as required. The constant k and the range of θ are fixed by requiring the curve to pass through B. The cycloid drops steeply at the start, so the ball builds up speed early, which more than makes up for the longer path.
+				  </aside>
+				</section>
+				</section>
+
+				<!-- PROBLEM 3: HANGING CHAIN -->
+				<section>
+				  <section>
+					<h3 style="text-align: center;">What shape does a hanging chain take?</h3>
+					<div style="display: flex; flex-direction: column; align-items: center; margin-top: 0.5em;">
+					  <div style="width: 24px; height: 30px; background: white;"></div>
+					  <div style="width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-top: 25px solid white;"></div>
+					</div>
+					  <aside class="notes">
+					Galileo is often said to have suggested a parabola. In the 17th century it was shown that this is not correct, and in 1691 Leibniz, Huygens and Johann Bernoulli published the right curve. The slides below derive it with the same tools as before.
+				  </aside>
+				  </section>
+				  <section class="titled">
+					<h3>The problem.</h3>
+					<ul>
+					  <li class="fragment">A chain of fixed length $L$ hangs between two nails.</li>
+					  <li class="fragment">It looks a bit like a parabola.</li>
+					  <li class="fragment">We want its shape $y(x)$.</li>
+					</ul>
+					  <aside class="notes">
+					The chain is assumed to be uniform, with the same mass per length everywhere.
+				  </aside>
+				  </section>
+				<section class="titled">
+				  <h3>Setting it up.</h3>
+
+				  <ul style="font-size: 0.7em;">
+					<li class="fragment">Nature picks the shape with the lowest potential energy, for a chain of fixed length $L$:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.35em 0; font-size: 0.65em;">
+					$$U=\rho g\int y\sqrt{1+y'^2}\,dx$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.35em 0; font-size: 0.65em;">
+					$$\int \sqrt{1+y'^2}\,dx=L$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.35em 0; font-size: 0.65em;">
+					$$F=(y+\lambda)\sqrt{1+y'^2}$$
+				  </div>
+					  <aside class="notes">
+					A small piece of the chain has length ds = √(1+y'²)dx and, at height y, the potential energy ρ·g·y·ds, where ρ is the mass per length. The total length is fixed, which is the same integral we used for the path length. As before, this condition is added with a multiplier λ. The constant ρg is absorbed into λ.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>Same shortcut.</h3>
+
+				  <ul>
+					<li class="fragment">Again $F$ does not contain $x$:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$F-y'\frac{\partial F}{\partial y'}=\frac{y+\lambda}{\sqrt{1+y'^2}}=C$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$1+y'^2=\frac{(y+\lambda)^2}{C^2}$$
+				  </div>
+					  <aside class="notes">
+					Here ∂F/∂y' = (y+λ)·y' / √(1+y'²). F minus y' times this simplifies to (y+λ) / √(1+y'²). Setting it equal to a constant C and solving for 1 + y'² gives the second line.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>The catenary.</h3>
+
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$y'=\sqrt{\frac{(y+\lambda)^2}{C^2}-1}$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$y(x)=C\cosh\!\left(\frac{x}{C}\right)-\lambda$$
+				  </div>
+				  <p class="fragment" style="text-align: center;"><strong>Not a parabola.</strong> It is a hyperbolic cosine.</p>
+					  <aside class="notes">
+					Separating variables, ∫ dy / √((y+λ)² − C²) = ∫ dx / C, gives arcosh((y+λ)/C) = x/C when the lowest point is at x = 0. Solving for y gives the hyperbolic cosine, called a catenary (from the Latin for chain). The constants C and λ are fixed by the positions of the two nails and the length L of the chain. For a shallow sag the catenary is close to a parabola, which is why the guess is not far off.
+				  </aside>
+				</section>
+				</section>
+
+				<!-- PROBLEM 4: ROTATING FLUID -->
+				<section>
+				  <section>
+					<h3 style="text-align: center;">What shape is the surface of water in a spinning bucket?</h3>
+					<div style="display: flex; flex-direction: column; align-items: center; margin-top: 0.5em;">
+					  <div style="width: 24px; height: 30px; background: white;"></div>
+					  <div style="width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-top: 25px solid white;"></div>
+					</div>
+					  <aside class="notes">
+					Because of the rotation, the water is pushed outwards and climbs up the wall. The slides below find the shape of the surface from an energy argument. Example adapted from my own notes.
+				  </aside>
+				  </section>
+				  <section class="titled">
+					<h3>The problem.</h3>
+					<ul>
+					  <li class="fragment">A cylinder of radius $R$ is filled with water up to a height $H_0$.</li>
+					  <li class="fragment">Spin it with angular speed $\omega$. The water climbs up the wall.</li>
+					  <li class="fragment">We want the height $h(r)$ of the surface, where $r$ is the distance from the axis.</li>
+					</ul>
+					  <aside class="notes">
+					The height of the water surface depends on the distance r from the axis.
+				  </aside>
+				  </section>
+				<section class="titled">
+				  <h3>Setting it up.</h3>
+
+				  <ul style="font-size: 0.7em; margin: 0;">
+					<li class="fragment">Nature picks the lowest total potential energy: gravity plus centrifugal.</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.45em 0; font-size: 0.65em;">
+					$$U=\rho g z-\frac{\rho\,\omega^2 r^2}{2}$$
+				  </div>
+				  <ul style="font-size: 0.7em; margin: 0;">
+					<li class="fragment">Adding it up over all the water:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.45em 0; font-size: 0.65em;">
+					$$E=\pi\rho\int_0^R\left(g\,r\,h^2-\omega^2 r^3 h\right)dr$$
+				  </div>
+				  <ul style="font-size: 0.7em; margin: 0;">
+					<li class="fragment">The amount of water is fixed:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.45em 0; font-size: 0.65em;">
+					$$\int_0^R h\,r\,dr=\frac{R^2H_0}{2}$$
+				  </div>
+					  <aside class="notes">
+					ρ is the density of the water and z the height above the bottom. Integrating U over the whole volume of water (in cylindrical coordinates, from the bottom up to the surface h(r)) gives E after doing the z and angle integrals. Mass conservation means that the volume of water stays πR²H₀, which gives the condition on the last line.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>A multiplier for the water.</h3>
+
+				  <ul>
+					<li class="fragment">Add the condition with a multiplier $\lambda$ (dropping the common factor $\pi\rho$):</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$F=g\,r\,h^2-\omega^2 r^3 h+\lambda\,r\,h$$
+				  </div>
+				  <ul>
+					<li class="fragment">$F$ does not contain $h'$. So the equation shrinks to $\frac{\partial F}{\partial h}=0$:</li>
+				  </ul>
+				  <div class="math fragment" style="text-align: center; margin: -0.2em 0;">
+					$$2\,g\,r\,h-\omega^2 r^3+\lambda r=0 \;\Rightarrow\; h(r)=\frac{\omega^2 r^2-\lambda}{2g}$$
+				  </div>
+					  <aside class="notes">
+					The functional contains the unknown function h but not its slope, so the second term of the Euler-Lagrange equation is 0 and what is left is an ordinary equation, not a differential equation. The multiplier was rescaled to absorb a constant factor, which is allowed because its value is fixed afterwards by the amount of water.
+				  </aside>
+				</section>
+				<section class="titled">
+				  <h3>Fixing the multiplier.</h3>
+
+				  <div class="math fragment" style="text-align: center; margin: -0.3em 0; font-size: 0.85em;">
+					$$\int_0^R\frac{\omega^2 r^2-\lambda}{2g}\,r\,dr=\frac{\omega^2R^4}{8g}-\frac{\lambda R^2}{4g}=\frac{R^2H_0}{2}$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.3em 0; font-size: 0.85em;">
+					$$\lambda=\frac{\omega^2R^2}{2}-2gH_0$$
+				  </div>
+				  <div class="math fragment" style="text-align: center; margin: -0.3em 0; font-size: 0.85em;">
+					$$h(r)=H_0+\frac{\omega^2}{2g}\left(r^2-\frac{R^2}{2}\right)$$
+				  </div>
+				  <p class="fragment" style="text-align: center;"><strong>A paraboloid.</strong></p>
+					  <aside class="notes">
+					The water-amount condition determines λ. Substituting it back gives the surface: a parabola in r, so a paraboloid when rotated around the axis. It is lowest in the centre, at H₀ − ω²R²/(4g), and highest at the wall, at H₀ + ω²R²/(4g). The water amount is conserved by construction. Liquid-mirror telescopes use this effect: a spinning pool of liquid forms a paraboloid, which is the shape of a telescope mirror.
+				  </aside>
+				</section>
+				</section>
+
+				<section class="titled">
+				  <h3>A word of caution.</h3>
+
+				  <ul>
+					<li class="fragment">The equation finds <strong>stationary</strong> functions: maxima, minima or saddle points.</li>
+					<li class="fragment">You still have to check which one you got.</li>
+					<li class="fragment">You get a differential equation, not an answer. Solving it can be hard.</li>
+				  </ul>
+					  <aside class="notes">
+					Like setting a derivative to 0 for ordinary functions, the condition is necessary but not sufficient. A function that satisfies it might be a minimum, a maximum or neither. In the examples here the answer is clear from the problem (the straight line is clearly the shortest, not the longest), but in general it has to be checked.
+				  </aside>
+				</section>
+
+				<!-- SOURCES -->
+				<section class="titled">
+				  <h3>Inspired by...</h3>
+				  <ul>
+					<li><a href="https://www.youtube.com/watch?v=Q10_srZ-pbs">"The Strange Physics Principle That Shapes Reality" by Veritasium</a></li>
+				  </ul>
+					  <aside class="notes">
+					A video about the principle of least action, where the Euler-Lagrange equation is used in physics. These are the sources and explanations I learned from.
+				  </aside>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../reveal.js/plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
