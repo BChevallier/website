@@ -2818,6 +2818,11 @@ input, select, textarea {
 					width: 100%;
 				}
 
+				/* inline-block .image sits on the text baseline and leaves a ~7px strip below it */
+				.spotlight.fill .image {
+					display: block;
+				}
+
 				.spotlight.fill .image img {
 					position: static;
 					height: auto;
