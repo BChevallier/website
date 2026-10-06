@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Categories</title>
 
 		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
 		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
@@ -12,12 +12,12 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
-        <link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="../style.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<!--Introduction-->
+				<!-- INTRODUCTION -->
 				<section>
 				  <h3>Five questions.</h3>
 				  <ul>
@@ -27,14 +27,17 @@
 					<li class="fragment fade-in">What makes a vegetable a vegetable?</li>
 					<li class="fragment fade-in">What makes a sport a sport?</li>
 				  </ul>
-				  <div style="height: 28vh;"></div>
+				  <aside class="notes">
+					Five everyday words that everybody uses and nobody can define cleanly. The following slides try to find a definition for each of them.
+				  </aside>
 				</section>
-				<!--Fish-->
-				<section>
+
+				<!-- FISH -->
+				<section class="titled">
 				  <h3>What makes a fish a fish?</h3>
 				  <ul>
 					<li class="fragment">
-					  Historically animal phyla (mammals, reptiles, birds, etc.) were
+					  Historically, animal groups (mammals, reptiles, birds, etc.) were
 					  defined by convention and common traits.
 					</li>
 					<li class="fragment">
@@ -48,87 +51,437 @@
 					  <span class="fragment">That's a problem.</span>
 					</li>
 				  </ul>
-				  <div style="height: 3vh;"></div>
 				  <aside class="notes">
-					The common ancestor of salmons and sharks lived roughly ~450 Million
-					years ago. Salmons are more closely related to humans than to sharks.
+					The common ancestor of salmon and sharks lived roughly 450 million years ago. Salmon are more closely related to humans than to sharks. A group defined by common ancestry has to contain all descendants of that ancestor, which would put mammals (that includes us) inside "fish".
 				  </aside>
 				</section>
+
 				<section>
-				  <section>
+				  <section class="titled">
 					<h3>Let's ask Wikipedia.</h3>
-					<blockquote class="fragment fade-in">
+					<blockquote class="fragment fade-in wide">
 					  A fish is an
 					  <span class="fragment highlight-current-green">aquatic</span>,
 					  <span class="fragment highlight-current-green">anamniotic</span>,
 					  <span class="fragment highlight-current-green">gill-bearing</span>
 					  <span class="fragment highlight-current-green">vertebrate</span>
 					  animal
-					  <span class="fragment highlight-current-green">
-						with a tough cranium to protect the brain
-					  </span>
-					  , but
-					  <span class="fragment highlight-current-green">
-						lacking limbs with digits
-					  </span>
-					  .
+					  <span class="fragment highlight-current-green">with a tough cranium to protect the brain</span>,
+					  but
+					  <span class="fragment highlight-current-green">lacking limbs with digits</span>.
 					</blockquote>
-					<div style="height: 32vh;"></div>
+					<aside class="notes">
+					  Paraphrased from the English Wikipedia article on fish. Each highlighted phrase is one criterion of the definition.
+					</aside>
 				  </section>
-				  <section>
+
+				  <section class="titled">
 					<h3>Included by the definition</h3>
-					<div style="display: flex; justify-content: space-around; gap: 1rem;">
-					  <img
-						src={hagfish}
-						style="width: 24%; height: auto;"
-						class="fragment"
-					  />
-					  <img
-						src={seahorse}
-						style="width: 24%; height: auto;"
-						class="fragment"
-					  />
+					<div class="img-row">
+					  <a href="https://www.mindenpictures.com/stock-photo-pacific-hagfish-eptatretus-stoutii-coiled-up-portrait-gulf-specimen-naturephotography-image90905526.html">
+					    <img src="img/hagfish.png" class="fragment" alt="Hagfish" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Seahorse_swimming.jpg">
+					    <img src="img/seahorse.png" class="fragment" alt="Seahorse" />
+					  </a>
 					  <a href="https://www.pexels.com/photo/flying-fish-1661337/">
-						  <img
-							src="img/flying_fish.png"
-							style="width: 24%; height: auto;"
-							class="fragment"
-						  />
+						<img src="img/flying_fish.png" class="fragment" alt="Flying fish" />
 					  </a>
-					  <img
-						src={mudskipper}
-						style="width: 24%; height: auto;"
-						class="fragment"
-					  />
+					  <a href="https://commons.wikimedia.org/wiki/File:Schlammspringer_Periophthalmus_sp.jpg">
+					    <img src="img/mudskipper.png" class="fragment" alt="Mudskipper" />
+					  </a>
 					</div>
+					<aside class="notes">
+					  Hagfish, seahorses, flying fish and mudskippers look nothing like a typical fish, but all fit the definition. Clicking an image opens its source. Seahorse: photo by Lisa McCarty, CC0, via Wikimedia Commons. Hagfish: photo by Joel Sartore (National Geographic Photo Ark). Mudskipper: photo by Holger Krisp, CC BY 3.0, via Wikimedia Commons.
+					</aside>
 				  </section>
-				  <section>
+
+				  <section class="titled">
 					<h3>Excluded by the definition</h3>
-					<div style="display: flex; justify-content: space-around; gap: 1rem;">
-					  <img
-						src={whale}
-						style="width: 24%; height: auto;"
-						class="fragment"
-					  />
-					  <a href="https://pxhere.com/en/photo/1001854">
-						  <img
-							src="img/cuttlefish.png"
-							style="width: 24%; height: auto;"
-							class="fragment"
-						  />
+					<div class="img-row">
+					  <a href="https://stock.adobe.com/images/Humpback-whale-swimming-in-blue-ocean.-Underwater-scene%2C-Humpback-whale-swimmi/665578697">
+					    <img src="img/whale.png" class="fragment" alt="Whale" />
 					  </a>
-					  <img
-						src={jellyfish}
-						style="width: 24%; height: auto;"
-						class="fragment"
-					  />
-					  <img
-						src={starfish}
-						style="width: 24%; height: auto;"
-						class="fragment"
-					  />
+					  <a href="https://pxhere.com/en/photo/1001854">
+						<img src="img/cuttlefish.png" class="fragment" alt="Cuttlefish" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Compass_Jellyfish,_Bristol_Channel.jpg">
+					    <img src="img/jellyfish.png" class="fragment" alt="Jellyfish" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Orange_Starfish_at_Olympic_National_Park.jpg">
+					    <img src="img/starfish.png" class="fragment" alt="Starfish" />
+					  </a>
 					</div>
+					<aside class="notes">
+					  Whales (mammals), cuttlefish (molluscs), jellyfish (cnidarians) and starfish (echinoderms) are not vertebrates with gills and a cranium, so the definition excludes them even though "fish" is in the name of two of them. Clicking an image opens its source. Whale: stock photo (Adobe Stock, photographer not credited). Jellyfish: compass jellyfish photo by Morhua, CC0, via Wikimedia Commons. Starfish: photo by Wing-Chi Poon, CC BY-SA 2.5, via Wikimedia Commons.
+					</aside>
 				  </section>
+				</section>
+
+				<!-- CONTINENTS -->
+				<section class="titled">
+				  <h3>What makes a continent a continent?</h3>
+				  <aside class="notes">
+					Next question: continents.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Let's ask Wikipedia.</h3>
+				  <blockquote class="fragment fade-in wide">
+					[...] Continents are generally identified by convention rather than any strict criteria. [...]
+				  </blockquote>
+				  <h4 class="fragment fade-in">Well, thanks for nothing...</h4>
+				  <aside class="notes">
+					Quote from the English Wikipedia article on continents.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Let's use a classroom definition.</h3>
+				  <blockquote class="fragment wide" data-fragment-index="1">
+					Continents are
+					<span class="fragment highlight-current-green">large</span> landmasses
+					<span class="fragment highlight-current-green">separated from others by oceans</span>.
+				  </blockquote>
+				  <a href="https://commons.wikimedia.org/wiki/File:Continents_by_colour.png">
+				    <img
+					src="img/world_map2.png"
+					style="display: block; margin: 0 auto; max-height: 380px;"
+					class="fragment"
+					data-fragment-index="1"
+					alt="World map"
+				  />
+				  </a>
+				  <aside class="notes">
+					Map: "Continents by colour", CC BY-SA 3.0, via Wikimedia Commons; clicking it opens the source. Under this definition Europe and Asia would be one continent (Eurasia), and North and South America are joined by a land bridge, as are Asia and Africa.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Let's ask geologists.</h3>
+				  <a href="https://commons.wikimedia.org/wiki/File:Plates_tect2_en.svg">
+				    <img
+					src="img/continents.png"
+					style="display: block; margin: 0 auto; max-height: 440px;"
+					class="fragment fade-in"
+					alt="Different continent models"
+				  />
+				  </a>
+				  <aside class="notes">
+					Different countries and fields count different numbers of continents (anywhere from four to seven). Geologists, for example, look at tectonic plates, which gives yet another answer. Map: USGS (public domain), via Wikimedia Commons; clicking it opens the source.
+				  </aside>
+				</section>
+
+				<!-- COUNTRIES -->
+				<section class="titled">
+				  <h3>What makes a country a country?</h3>
+				  <ul>
+					<li class="fragment">193 UN member states</li>
+					<li class="fragment">7 additional partially recognized countries</li>
+					<li class="fragment">206 participating countries at the Olympics</li>
+					<li class="fragment">
+					  Our definition needs to include the Vatican and exclude Hong Kong.
+					</li>
+				  </ul>
+				  <aside class="notes">
+					Different lists, different numbers. Which one counts depends on who is asking and why. The Vatican is a UN observer state; Hong Kong competes at the Olympics as its own team.
+				  </aside>
+				</section>
+
+				<section>
+				  <section class="titled">
+					<h3>Let's look at common characteristics.</h3>
+					<ul>
+					  <li class="fragment">defined territory (or not)</li>
+					  <li class="fragment">permanent population (or not)</li>
+					  <li class="fragment">self-governing (or not)</li>
+					  <li class="fragment">international recognition (or not)</li>
+					  <li class="fragment">own currency (or not)</li>
+					  <li class="fragment">independent military (or not)</li>
+					</ul>
+					<aside class="notes">
+					  Typical criteria for statehood. None of them is both necessary and sufficient.
+					</aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Some edge cases</h3>
+					<div class="img-row">
+					  <a href="https://commons.wikimedia.org/wiki/File:Flag_of_the_Vatican_City.svg">
+					    <img src="img/vatican.png" class="fragment fade-in" alt="Vatican" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Hong_Kong.svg">
+					    <img src="img/hongkong.png" class="fragment fade-in" alt="Hong Kong" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Greenland.svg">
+					    <img src="img/greenland.png" class="fragment fade-in" alt="Greenland" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Somaliland.svg">
+					    <img src="img/somaliland.png" class="fragment fade-in" alt="Somaliland" />
+					  </a>
+					</div>
+					<aside class="notes">
+					  The Vatican has almost no territory or permanent population. Hong Kong has its own currency, laws and Olympic team but is part of China. Greenland governs itself but belongs to the Kingdom of Denmark. Somaliland governs itself and has no international recognition. The images are the flags of the Vatican, Hong Kong, Greenland and Somaliland; clicking one opens its Wikimedia Commons page.
+					</aside>
+				  </section>
+				</section>
+
+				<!-- VEGETABLES -->
+				<section class="titled">
+				  <h3>What makes a vegetable a vegetable?</h3>
+				  <aside class="notes">
+					Next question: vegetables.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Let's ask Wikipedia.</h3>
+				  <blockquote class="fragment fade-in wide">
+					Vegetables are edible parts of plants that are consumed by humans or other animals as food.
+				  </blockquote>
+				  <h4 class="fragment fade-in">How wonderfully vague...</h4>
+				  <aside class="notes">
+					Paraphrased from the English Wikipedia article on vegetables.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Why is it so hard to define?</h3>
+				  <ul>
+					<li class="fragment fade-in">
+					  Because it's not a botanical term, but a culinary one.
+					</li>
+					<li class="fragment fade-in">
+					  In botany we differentiate between seeds, roots, stems, flowers, fruits... and that's it. No vegetables.
+					</li>
+					<li class="fragment fade-in">
+					  So saying "a tomato is a fruit, not a vegetable" is a category error.
+					</li>
+				  </ul>
+				  <aside class="notes">
+					Botanically, a tomato is a fruit, but "vegetable" is a kitchen category, so the two statements do not contradict each other.
+				  </aside>
+				</section>
+
+				<section>
+				  <section class="titled">
+					<h3>Is there a culinary definition?</h3>
+					<ul>
+					  <li class="fragment fade-in">In short: no.</li>
+					  <li class="fragment fade-in">
+						Culinary classifications are not standardized and vary enormously between individuals and cultures.
+					  </li>
+					  <li class="fragment fade-in">
+						The best "definition" I could find is: a plant we eat, but not for dessert.
+					  </li>
+					</ul>
+					<aside class="notes">
+					  The "not for dessert" rule is a rule of thumb, not a standard. It is also what makes rhubarb awkward.
+					</aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Some edge cases</h3>
+					<div class="img-row">
+					  <a href="https://commons.wikimedia.org/wiki/File:Champignons_Agaricus.jpg">
+					    <img src="img/champignon.png" class="fragment fade-in" alt="Mushroom" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:CSA-Rhubarb.jpg">
+					    <img src="img/rhubarb.png" class="fragment fade-in" alt="Rhubarb" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Avocado_Hass_-_single_and_halved.jpg">
+					    <img src="img/avocado.png" class="fragment fade-in" alt="Avocado" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Nori.jpg">
+					    <img src="img/nori.png" class="fragment fade-in" alt="Nori" />
+					  </a>
+					</div>
+					<aside class="notes">
+					  Mushrooms are fungi, rhubarb is a stalk we eat in desserts, avocado is a fruit we eat in savoury dishes, and nori is algae. Clicking an image opens its source. Mushrooms: photo by Darkone, CC BY-SA 2.5. Rhubarb: photo by Evan-Amos, public domain. Nori: photo by Alice Wiegand, CC BY-SA 3.0. Avocado: photo by Ivar Leidus, CC BY-SA 4.0. All via Wikimedia Commons.
+					</aside>
+				  </section>
+				</section>
+
+				<!-- SPORT -->
+				<section class="titled">
+				  <h3>What makes a sport a sport?</h3>
+				  <aside class="notes">
+					Last question: sports.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Let's ask Wikipedia.</h3>
+				  <blockquote class="fragment fade-in wide">
+					Sport is a physical activity
+					<span class="fragment highlight-current-green">or</span> game,
+					<span class="fragment highlight-current-green">often</span>
+					competitive and organized, that maintains
+					<span class="fragment highlight-current-green">or</span> improves
+					physical ability and skills.
+				  </blockquote>
+				  <h4 class="fragment">That's not very helpful.</h4>
+				  <aside class="notes">
+					Paraphrased from the English Wikipedia article on sport. The highlighted words ("or", "often") show how many exits the definition leaves open.
+				  </aside>
+				</section>
+
+				<section>
+				  <section class="titled">
+					<h3>Let's look at common characteristics.</h3>
+					<ul>
+					  <li class="fragment fade-in">form of physical activity (or not)</li>
+					  <li class="fragment fade-in">competitive (or not)</li>
+					  <li class="fragment fade-in">done for its own sake (or not)</li>
+					  <li class="fragment fade-in">having clear rules (or not)</li>
+					  <li class="fragment fade-in">social (or not)</li>
+					</ul>
+					<aside class="notes">
+					  As with countries, none of these is both necessary and sufficient.
+					</aside>
+				  </section>
+
+				  <section class="titled">
+					<h3>Some edge cases</h3>
+					<div class="img-row">
+					  <a href="https://commons.wikimedia.org/wiki/File:Chess_game_Staunton_No._6.jpg">
+					    <img src="img/chess.png" class="fragment fade-in" alt="Chess" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Dart_board.jpg">
+					    <img src="img/dart.png" class="fragment fade-in" alt="Darts" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Sunset_sea_fishing_in_Asilah_(Unsplash).jpg">
+					    <img src="img/fishing.png" class="fragment fade-in" alt="Fishing" />
+					  </a>
+					  <a href="https://commons.wikimedia.org/wiki/File:Legends_are_born_during_esports_tournament_(4496043).jpg">
+					    <img src="img/gaming.png" class="fragment fade-in" alt="Gaming" />
+					  </a>
+					</div>
+					<aside class="notes">
+					  Chess, darts, fishing and esports are each called a sport by some people and not by others. Clicking an image opens its source. Chess: photo by Wilfredor, CC0. Darts: photo by Kurt Kaiser, CC0. Fishing: photo by Aziz Acharki, CC0. Esports: U.S. Air Force photo, public domain. All via Wikimedia Commons.
+					</aside>
+				  </section>
+				</section>
+
+				<!-- ENDING -->
+				<section class="titled">
+				  <h3>
+					Five questions.
+					<span class="fragment fade-in" data-fragment-index="2">One answer.</span>
+				  </h3>
+
+				  <ul>
+					<li>
+					  <span class="fragment fade-in-then-semi-out" data-fragment-index="1">What makes a fish a fish?</span>
+					  <span class="fragment fade-in" data-fragment-index="2">We do.</span>
+					</li>
+					<li>
+					  <span class="fragment fade-in-then-semi-out" data-fragment-index="1">What makes a continent a continent?</span>
+					  <span class="fragment fade-in" data-fragment-index="2">We do.</span>
+					</li>
+					<li>
+					  <span class="fragment fade-in-then-semi-out" data-fragment-index="1">What makes a country a country?</span>
+					  <span class="fragment fade-in" data-fragment-index="2">We do.</span>
+					</li>
+					<li>
+					  <span class="fragment fade-in-then-semi-out" data-fragment-index="1">What makes a vegetable a vegetable?</span>
+					  <span class="fragment fade-in" data-fragment-index="2">We do.</span>
+					</li>
+					<li>
+					  <span class="fragment fade-in-then-semi-out" data-fragment-index="1">What makes a sport a sport?</span>
+					  <span class="fragment fade-in" data-fragment-index="2">We do.</span>
+					</li>
+				  </ul>
+				  <aside class="notes">
+					These categories are statements about human convention, not about nature. Nature contains animals, landmasses, plants and activities; we are the ones who draw the lines between them.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Categories compress information.</h3>
+				  <ul>
+					<li class="fragment fade-in">
+					  "Fish" saves you from listing every trait of every animal in the water.
+					</li>
+					<li class="fragment fade-in">
+					  "Vegetable" tells a cook roughly what to expect, in one word.
+					</li>
+					<li class="fragment fade-in">
+					  A category is a shared shortcut: we agree on it so we don't have to explain.
+					</li>
+				  </ul>
+				  <aside class="notes">
+					A category bundles many properties into one word. If speaker and listener share the same convention, one word transmits what would otherwise take a whole description. That is the entire job of a category.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Compression is lossy.</h3>
+				  <ul>
+					<li class="fragment fade-in">
+					  A category hides differences between its members.
+					</li>
+					<li class="fragment fade-in">
+					  Hagfish and salmon are both "fish", yet they share less than salmon and humans do.
+					</li>
+					<li class="fragment fade-in">
+					  The edge cases are where the information gets lost.
+					</li>
+				  </ul>
+				  <aside class="notes">
+					Like a compressed image, a category throws away detail. Usually that is fine. At the edges (the Vatican, rhubarb, chess) the lost detail is exactly what we are arguing about, which is why the definitions never settle.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>When it stops compressing, discard it.</h3>
+				  <ul>
+					<li class="fragment fade-in">
+					  At the fishmonger, "fish" still works.
+					</li>
+					<li class="fragment fade-in">
+					  In evolutionary biology, it doesn't. Use clades instead.
+					</li>
+					<li class="fragment fade-in">
+					  Same word, different job. Keep it where it helps, drop it where it misleads.
+					</li>
+				  </ul>
+				  <aside class="notes">
+					A category is judged by whether it still saves communication effort in a given context. When describing what to buy for dinner, "fish" does. When describing ancestry, it causes confusion, and a more specific term (a clade such as ray-finned fishes, or vertebrates) is better.
+				  </aside>
+				</section>
+
+				<section class="titled">
+				  <h3>Words are tools...</h3>
+				  <ul>
+					<li class="fragment fade-in">Tools should make life easier.</li>
+					<li class="fragment fade-in">If they don't, they shouldn't be used.</li>
+					<li class="fragment fade-in">Specific tools are made for specific situations.</li>
+				  </ul>
+				  <aside class="notes">
+					A word is useful if it makes communication easier. If it causes more confusion than it removes, drop it or replace it with a more specific word.
+				  </aside>
+				</section>
+
+				<!-- SOURCES -->
+				<section class="titled">
+				  <h3>Inspired by...</h3>
+				  <ul>
+					<li>
+					  CGP Grey (<a href="https://youtu.be/3uBcq1x7P34">continents</a>,
+					  <a href="https://youtu.be/4AivEQmfPpk">countries</a>)
+					</li>
+					<li>
+					  Hank Green (<a href="https://m.youtube.com/watch?v=-C3lR3pczjo">fish</a>)
+					</li>
+					<li>
+					  Max Bird (<a href="https://www.youtube.com/watch?v=j7IL-E5WlGk">vegetables</a>)
+					</li>
+				  </ul>
+				  <aside class="notes">
+					These are the sources and explanations I learned from.
+				  </aside>
 				</section>
 			</div>
 		</div>

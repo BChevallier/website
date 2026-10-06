@@ -52,3 +52,34 @@
 .reveal .fragment.fill-black.visible {
   background: transparent !important;
 }
+
+/* Row of images (edge-case slides). */
+.reveal .img-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reveal .img-row > img,
+.reveal .img-row > a {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 24%;
+}
+
+.reveal .img-row > a > img {
+  width: 100%;
+}
+
+.reveal .img-row img {
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+}
+
+/* Full-width quote that stays inside the slide frame. */
+.reveal blockquote.wide {
+  width: 100%;
+  box-sizing: border-box;
+}
