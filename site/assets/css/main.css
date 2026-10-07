@@ -2722,9 +2722,13 @@ input, select, textarea {
 					object-fit: cover;
 				}
 
-				/* the video carries inline fallback sizes (height: auto) for stale cached CSS; override them here */
+				/* the video carries inline fallback sizes (height: auto) for stale cached CSS; override them here.
+				   contain, not cover: cropping clips the atoms at the simulation walls. The background matches the
+				   video's own (#2a353b), so the letterbox bands are invisible. */
 				.spotlight.fill .image video {
 					height: 100% !important;
+					object-fit: contain !important;
+					background: #2a353b;
 				}
 
 				/* Embeds stretch to the row too; min-height keeps a 16:9 floor (image column is 40vw wide) */
