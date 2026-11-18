@@ -99,10 +99,12 @@
 							</section>
 							<section class="spotlight fill">
 								<div class="image">
-									<div class="embed">
+									<!-- the demo renders at 160% size and is scaled to 62.5%, so it looks zoomed out; inline so a stale cached stylesheet can't break it -->
+									<div class="embed" style="overflow: hidden;">
 										<iframe
 										  src="https://bchevallier.github.io/skills/to-do-bubbles/assets/demo.html"
 										  title="Bubbles to-do tracker demo"
+										  style="width: 160%; height: 160%; transform: scale(0.625); transform-origin: 0 0;"
 										  loading="lazy">
 										</iframe>
 									</div>
